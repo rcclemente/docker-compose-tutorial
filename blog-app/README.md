@@ -1,24 +1,10 @@
-# README
+# Copy the repo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    git clone git@github.com:rcclemente/docker-compose-tutorial.git
 
-Things you may want to cover:
+# Build the images
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    docker-compose build
+    docker-compose up
+    docker-compose run blog-app rails webpacker:install
+    docker-compose run blog-app rake db:create

@@ -1,26 +1,25 @@
 FROM ruby:2.5.7
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y build-essential nodejs postgresql-client npm
+RUN npm install -g yarn
 
-# Set an environment variable where the Rails app is installed to inside of Docker image
-ENV RAILS_ROOT /var/www/app_name
-RUN mkdir -p $RAILS_ROOT
+RUN mkdir /blog-app
+WORKDIR /blog-app
+COPY Gemfile /blog-app/Gemfile
+COPY Gemfile.lock /blog-app/Gemfile.lock
 
-# Set working directory
-WORKDIR $RAILS_ROOT
+RUN gem install bundler -v 1.17.3 --no-document && \
+  gem install nokogiri -v 1.10.9 --no-document
 
-# Setting env up
-ENV RAILS_ENV='production'
-ENV RACK_ENV='production'
+RUN bundle install
 
-# Adding gems
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+COPY . /blog-app
 
-RUN bundle install --jobs 20 --retry 5 --without development test
-
-# Adding project files
-COPY . .
-RUN bundle exec rake assets:precompile
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
