@@ -1,11 +1,15 @@
 version: '3'
 services:
   db_server:
-    image: postgres
+    image: mysql:5.7
     # volumes:
-    #   - ./db_server:/var/lib/postgresql/data
+    #   - ./db_server:/var/lib/mysql
     environment:
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - "8181:3306"
 
   blog-app:
     build:
@@ -14,7 +18,13 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./blog-app:/blog-app
+    environment:
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_PORT=3306
+      - DB_HOST=db_server
     ports:
       - "8080:3000"
     depends_on:
       - db_server
+

@@ -1,9 +1,9 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: db_server
-  username: postgres
-  password:
+  adapter: mysql2
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  port: <%= ENV['DB_PORT'] %>
+  host: <%= ENV['DB_HOST'] %>
   pool: 5
 
 development:
