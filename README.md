@@ -16,6 +16,13 @@ Docker Compose Tutorial
 
     http://192.168.42.45:8080/
 
+# Connect to mysql
+
+    mysql -h 192.168.42.45 -P 8181 -u root -p
+
+    docker-compose exec db_server /bin/bash
+    mysql -u root -p
+
 # Stop the app and cleanup
 
     docker-compose down
