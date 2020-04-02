@@ -1,7 +1,6 @@
 FROM ruby:2.5.7
 
 RUN apt-get update -qq && apt-get install -y build-essential nodejs default-libmysqlclient-dev npm
-RUN npm install -g yarn
 
 RUN mkdir /blog-app
 WORKDIR /blog-app
@@ -12,6 +11,8 @@ RUN gem install bundler -v 1.17.3 --no-document && \
   gem install nokogiri -v 1.10.9 --no-document
 
 RUN bundle install
+RUN npm install -g yarn
+RUN yarn install --check-files
 
 COPY . /blog-app
 
