@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'byebug'
+require 'ffaker'
+
+[0..9].each do |n|
+  author = FFaker::Name.name
+  article = FFaker::Lorem.paragraph
+  Post.create(author: author, article: article)
+end

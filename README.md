@@ -12,7 +12,7 @@ Docker Compose Tutorial
 
 # Initialize the db
 
-    docker-compose run blog-app rake db:create
+    docker-compose run blog-app rake db:create db:migrate
 
     http://192.168.42.45:8080/
 
