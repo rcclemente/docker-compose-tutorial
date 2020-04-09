@@ -31,6 +31,12 @@ Docker Compose Tutorial
 
 ## Troubleshooting
 
+- Restart the rails app
+
+    ```bash
+    docker-compose restart blog-app
+    ```
+
 - Mysql error
 
     ```bash
