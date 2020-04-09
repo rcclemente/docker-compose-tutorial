@@ -29,7 +29,7 @@ Docker Compose Tutorial
     docker-compose rm
 
 
-# Troubleshooting
+## Troubleshooting
 
 - Mysql error
 
@@ -45,5 +45,13 @@ Docker Compose Tutorial
 
     ```bash
     docker-compose run blog-app rails webpacker:install
+    ```
+
+## Extras
+
+- Generate a model and controller
+
+    ```bash
+    docker-compose run blog-app rails g scaffold Post author:string article:text
     ```
 
