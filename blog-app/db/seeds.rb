@@ -8,8 +8,9 @@
 require 'byebug'
 require 'ffaker'
 
-[0..9].each do |n|
+(0..9).each do |n|
   author = FFaker::Name.name
   article = FFaker::Lorem.paragraph
+  puts "#{n} author: #{author} => #{article} \n\n"
   Post.create(author: author, article: article)
 end

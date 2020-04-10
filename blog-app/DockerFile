@@ -4,11 +4,13 @@ RUN apt-get update -qq && apt-get install -y build-essential nodejs default-libm
 
 RUN mkdir /blog-app
 WORKDIR /blog-app
-COPY Gemfile /blog-app/Gemfile
-COPY Gemfile.lock /blog-app/Gemfile.lock
 
 RUN gem install bundler -v 1.17.3 --no-document && \
-  gem install nokogiri -v 1.10.9 --no-document
+  gem install nokogiri -v 1.10.9 --no-document && \
+  gem install sassc -v 2.2.1 --no-document
+
+COPY Gemfile /blog-app/Gemfile
+COPY Gemfile.lock /blog-app/Gemfile.lock
 
 RUN bundle install
 RUN npm install -g yarn
