@@ -5,8 +5,8 @@ Docker Compose Tutorial
     brew install docker-compose
     git clone git@github.com:rcclemente/docker-compose-tutorial.git
 
-    docker-compose build
-    docker-compose up -d
+    docker-compose build --no-cache
+    docker-compose up
     docker-compose run blog-app rake db:create db:migrate db:seed
 
 # Access the site
