@@ -1,18 +1,15 @@
 # docker-compose-tutorial
 Docker Compose Tutorial
 
-# Copy the repo
-
+# Initialize
+    brew install docker-compose
     git clone git@github.com:rcclemente/docker-compose-tutorial.git
 
-# Build the images
-
     docker-compose build
-    docker-compose up
-
-# Initialize the db
-
+    docker-compose up -d
     docker-compose run blog-app rake db:create db:migrate db:seed
+
+# Access the site
 
     http://192.168.42.45:8080/
 
