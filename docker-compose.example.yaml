@@ -1,0 +1,9 @@
+version: '3'
+services:
+  app_name:
+    ports:
+      - "host_port:internal_app_port"
+    depends_on:
+      - next_app
+
+  next_app:
