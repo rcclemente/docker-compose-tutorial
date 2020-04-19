@@ -7,6 +7,8 @@ Docker Compose Tutorial
 
     docker-compose build --no-cache
     docker-compose up
+
+    # in a new terminal window
     docker-compose run blog-app rake db:create db:migrate db:seed
 
 # Access the site
