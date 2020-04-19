@@ -5,7 +5,10 @@ Docker Compose Tutorial
     brew install docker-compose
     git clone git@github.com:rcclemente/docker-compose-tutorial.git
 
+    cd docker-compose-tutorial
     docker-compose build --no-cache
+
+    # start the app
     docker-compose up
 
     # in a new terminal window
