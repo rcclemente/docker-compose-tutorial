@@ -7,7 +7,7 @@ ruby '2.5.7'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'bundler', '>= 1.12.1'
 gem 'mysql2', '0.4.10' # https://github.com/zendesk/zendesk/pull/32075
-gem 'nokogiri', '1.10.9'
+gem 'nokogiri', '1.11.4'
 gem 'ffaker'
 # gem 'pg'
 # Use sqlite3 as the database for Active Record
